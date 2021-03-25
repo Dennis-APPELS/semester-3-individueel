@@ -1,5 +1,6 @@
 package com.example.demo.chat_controller;
 
+
 public class StompMessage {
     private String name;
     private String text;

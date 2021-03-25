@@ -30,12 +30,14 @@ public class Lobby {
         return users.GetAllUsers();
     }
 
-    public String AddUser(User user){
-        users.AddUser(user);
-        return chatController.GreetUser(user.getName());
+
+
+    public void RemoveUser(User userToRemove, User admin){
+
     }
 
-    public void RemoveUser(User user){
-
+    public String AddUser(User user){
+        users.AddUser(user);
+        return "Successfully Added!";
     }
 }
