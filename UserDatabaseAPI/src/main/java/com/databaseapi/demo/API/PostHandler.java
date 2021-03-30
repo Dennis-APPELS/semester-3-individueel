@@ -13,26 +13,6 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("POST")
 public class PostHandler {
 
-    @Autowired
-    private UserContainer userContainer;
+    private UserContainer userContainer = new UserContainer();
 
-    public PostHandler(UserContainer container){
-        userContainer = container;
-    }
-
-    @PostMapping(value= "/Users/Login", consumes = "application/json")
-    public boolean userLogin(@RequestBody LoginUserInfo userInfo){
-        return userContainer.loginCheck(userInfo);
-    }
-
-    @PostMapping(value = "/Users/Register", consumes = "application/json")
-    public void userRegister(@RequestBody RegistrationUserInfo user){
-        try{
-            userContainer.RegisterUser(user);
-        }
-        catch (Exception exc) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "User already exists", exc);
-        }
-    }
 }

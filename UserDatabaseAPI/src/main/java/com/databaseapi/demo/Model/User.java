@@ -26,7 +26,7 @@ public class User {
     public User (RegistrationUserInfo user){
         password = user.getPassword();
         name = user.getName();
-        email = user.getEmail();;
+        email = user.getEmail();
     }
 
 }

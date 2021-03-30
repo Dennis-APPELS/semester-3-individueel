@@ -11,14 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("GET")
 public class GetHandler {
 
-    @Autowired
-    private UserContainer userContainer;
+    private UserContainer userContainer = new UserContainer();
 
     private UserConverter converter = new UserConverter();
 
-    public GetHandler(UserContainer container){
-        userContainer = container;
-    }
 
     @GetMapping("/Users/{id}")
     public UserInfo getUser(@PathVariable long id){
