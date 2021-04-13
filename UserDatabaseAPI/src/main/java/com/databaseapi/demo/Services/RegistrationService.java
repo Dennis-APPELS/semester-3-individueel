@@ -1,11 +1,9 @@
 package com.databaseapi.demo.Services;
 
 import com.databaseapi.demo.ApiModels.RegistrationUserInfo;
-import com.databaseapi.demo.DataModels.UserDataModel;
 import com.databaseapi.demo.Model.User;
 import com.databaseapi.demo.Model.UserContainer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
 
 @Component
