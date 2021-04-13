@@ -13,7 +13,7 @@ public class VerificationService {
 
     public boolean verifyUser(LoginUserInfo loginInfo){
             User user = userContainer.GetUser(loginInfo.getName());
-            if(user.getPassword() == loginInfo.getPassword()){
+            if(user.getPassword().matches(loginInfo.getPassword())){
                 return true;
             }
             else return false;
