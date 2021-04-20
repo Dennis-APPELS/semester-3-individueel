@@ -6,22 +6,29 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.util.HtmlUtils;
+@CrossOrigin
 @RestController
 public class Chat_Controller {
 
-    @MessageMapping("/Chat.send")
+    @MessageMapping("/ChatSend")
     @SendTo("/topic/public")
     public MessageModel sendMessage(@Payload MessageModel message){
         return message;
     }
 
-    @MessageMapping("/Chat.newUser")
+    @MessageMapping("/ChatNewUser")
     @SendTo("/topic/public")
-    public MessageModel newUser(@Payload MessageModel message, SimpMessageHeaderAccessor headerAccessor){
-        headerAccessor.getSessionAttributes().put("username", message.getFrom());
-        return message;
+    public Greeting newUser(MessageModel message){
+        return new Greeting("Hello " + message.getFrom());
+    }
+
+    @MessageMapping("/Hello")
+    @SendTo("/topic/greetings")
+    public Greeting greetUser(HelloMesssage message){
+        return new Greeting("Hello " + HtmlUtils.htmlEscape(message.getName()));
     }
 
 

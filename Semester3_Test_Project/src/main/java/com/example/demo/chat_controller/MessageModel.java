@@ -11,6 +11,4 @@ public class MessageModel {
     @Getter
     private String content;
 
-    @Getter
-    private MessageType type;
 }

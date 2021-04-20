@@ -18,18 +18,17 @@ public class WebsocketEventListener {
     @Autowired
     private SimpMessageSendingOperations sendingOperations;
 
-    @EventListener
+    /*@EventListener
     public void handleWebsocketConnectListener(SessionConnectedEvent event){
         logger.info("Yote");
         System.out.println("We got em!");
-    }
+    }*/
 
     @EventListener
     public void handleWebsocketDisconnectListener(SessionDisconnectEvent event){
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
         String username = (String) headerAccessor.getSessionAttributes().get("username");
-        MessageModel message = MessageModel.builder().type(MessageType.Disconnect)
-                .from(username).build();
+        MessageModel message = MessageModel.builder().from(username).build();
         sendingOperations.convertAndSend("/topic/public", message);
     }
 }
