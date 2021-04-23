@@ -42,7 +42,8 @@ verify:jdk8:
   <<: *verify
 build-job:
     stage: build
-    tag: my-runner
+    tags: 
+      - my-runner
     script:
         - echo "Hello"
 # To deploy packages from CI, create a ci_settings.xml file
