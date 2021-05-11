@@ -50,7 +50,7 @@ build-job:
       - my-runner
     script:
         - echo "Building Project"
-        - ./UserDatabaseAPI/mvnw package
+        - ./UserDatabaseAPI/mvnw compiler:compile
         - echo "Build Succeded?"
 # To deploy packages from CI, create a ci_settings.xml file
 # For deploying packages to GitLab's Maven Repository: See https://docs.gitlab.com/ee/user/packages/maven_repository/index.html#create-maven-packages-with-gitlab-cicd for more details.
