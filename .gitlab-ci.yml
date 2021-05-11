@@ -50,7 +50,7 @@ build-job:
       - my-runner
     script:
         - echo "Building Project"
-        - git update-index --chmod+x ./UserDatabaseAPI/mvnw
+        - git update-index --chmod +x ./UserDatabaseAPI/mvnw
         - ./UserDatabaseAPI/mvnw compiler:compile
         - echo "Build Succeded?"
 # To deploy packages from CI, create a ci_settings.xml file
