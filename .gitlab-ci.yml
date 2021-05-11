@@ -40,6 +40,10 @@ cache:
 # Verify merge requests using JDK8
 verify:jdk8:
   <<: *verify
+
+before_script:
+  - git update-index --chmod=+x mvnw
+
 build-job:
     stage: build
     tags: 
