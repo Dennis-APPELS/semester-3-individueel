@@ -42,7 +42,7 @@ verify:jdk8:
   <<: *verify
 
 before_script:
-  - git update-index --chmod=+x mvnw
+  - git update-index --chmod=+x ./UserDatabaseAPI/mvnw
 
 build-job:
     stage: build
