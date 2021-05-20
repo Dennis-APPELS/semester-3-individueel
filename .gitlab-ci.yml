@@ -47,7 +47,7 @@ build-job:
       - my-runner
     script:
         - echo "Building Project" 
-        - 'mvnw verify -X'
+        - 'mvn $MAVEN_CLI_OPTS verify'
         - echo "Build Succeded?
 
 
