@@ -48,7 +48,7 @@ build-job:
     script:
         - echo "Building Project" 
         - 'mvn $MAVEN_CLI_OPTS compile -X'
-        - echo "Build Succeded?
+        - echo "Build Succeded?"
 
 
 
