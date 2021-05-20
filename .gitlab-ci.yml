@@ -41,6 +41,15 @@ cache:
 verify:jdk8:
   <<: *verify
 
+build-job:
+    stage: build
+    tags: 
+      - my-runner
+    script:
+        - echo "Building Project" 
+        - 'mvnw verify -X'
+        - echo "Build Succeded?
+
 
 
 
