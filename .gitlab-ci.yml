@@ -46,7 +46,7 @@ verify:jdk8:
   tags: 
       - my-runner
   script:
-    - 'mvn $MAVEN_CLI_OPTS verify -X'
+    - 'mvn $MAVEN_CLI_OPTS verify -X''
 
 
 # To deploy packages from CI, create a ci_settings.xml file
