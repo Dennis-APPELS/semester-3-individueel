@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="semester-3-individueel" target="1.8" />
+      <module name="semester-3-individueel" target="11" />
       <module name="UserDatabaseAPI" target="1.8" />
     </bytecodeTargetLevel>
   </component>
