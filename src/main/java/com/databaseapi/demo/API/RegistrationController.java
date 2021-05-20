@@ -1,6 +1,6 @@
 package com.databaseapi.demo.API;
-import com.databaseapi.demo.ApiModels.RegistrationUserInfo;
-import com.databaseapi.demo.Services.RegistrationService;
+import com.databaseapi.demo.API.ApiModels.RegistrationUserInfo;
+import com.databaseapi.demo.logic.Services.RegistrationService;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin

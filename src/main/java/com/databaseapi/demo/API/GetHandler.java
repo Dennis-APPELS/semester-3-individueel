@@ -1,9 +1,8 @@
 package com.databaseapi.demo.API;
 
-import com.databaseapi.demo.ApiModels.UserInfo;
-import com.databaseapi.demo.Converters.UserConverter;
-import com.databaseapi.demo.Model.UserContainer;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.databaseapi.demo.API.ApiModels.UserInfo;
+import com.databaseapi.demo.DAL.Converters.UserConverter;
+import com.databaseapi.demo.logic.Model.UserContainer;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
