@@ -32,7 +32,7 @@ cache:
 .verify: &verify
   stage: test
   script:
-    - 'mvn $MAVEN_CLI_OPTS verify -X'
+    - 'mvn $MAVEN_CLI_OPTS verify'
   except:
     variables:
       - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -41,12 +41,7 @@ cache:
 verify:jdk8:
   <<: *verify
 
-.compile: &compile
-  stage: build
-  tags: 
-      - my-runner
-  script:
-    - 'mvn verify -X'
+
 
 
 # To deploy packages from CI, create a ci_settings.xml file
