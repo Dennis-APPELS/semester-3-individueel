@@ -1,7 +1,7 @@
-package com.databaseapi.demo.Converters;
+package com.databaseapi.demo.DAL.Converters;
 
-import com.databaseapi.demo.ApiModels.UserInfo;
-import com.databaseapi.demo.Model.User;
+import com.databaseapi.demo.API.ApiModels.UserInfo;
+import com.databaseapi.demo.Logic.Model.User;
 
 public class UserConverter {
 

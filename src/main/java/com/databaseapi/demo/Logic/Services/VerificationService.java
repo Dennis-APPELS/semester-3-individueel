@@ -1,8 +1,8 @@
-package com.databaseapi.demo.Services;
+package com.databaseapi.demo.Logic.Services;
 
-import com.databaseapi.demo.ApiModels.LoginUserInfo;
-import com.databaseapi.demo.Model.User;
-import com.databaseapi.demo.Model.UserContainer;
+import com.databaseapi.demo.API.ApiModels.LoginUserInfo;
+import com.databaseapi.demo.Logic.Model.User;
+import com.databaseapi.demo.Logic.Model.UserContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

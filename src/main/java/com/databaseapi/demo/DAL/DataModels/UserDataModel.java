@@ -1,6 +1,6 @@
-package com.databaseapi.demo.DataModels;
+package com.databaseapi.demo.DAL.DataModels;
 
-import com.databaseapi.demo.Model.User;
+import com.databaseapi.demo.Logic.Model.User;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,9 +1,7 @@
 package com.databaseapi.demo.API;
 
-import com.databaseapi.demo.ApiModels.LoginUserInfo;
-import com.databaseapi.demo.Model.UserContainer;
-import com.databaseapi.demo.Services.VerificationService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.databaseapi.demo.API.ApiModels.LoginUserInfo;
+import com.databaseapi.demo.Logic.Services.VerificationService;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
