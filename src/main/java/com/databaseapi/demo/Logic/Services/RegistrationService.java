@@ -8,12 +8,22 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RegistrationService {
-    @Autowired
     private UserContainer userContainer;
+
+    public RegistrationService(UserContainer userContainer) {
+        this.userContainer = userContainer;
+    }
 
     public void registerUser(RegistrationUserInfo userInfo){
             User user = new User(userInfo);
-            userContainer.saveUser(user);
+            try{
+                userContainer.SaveUser(user);
+            }
+            catch(Exception ex){
+                System.out.println(ex.getMessage());
+                System.out.println(ex.getCause());
+                System.out.println(ex.getStackTrace());
+            }
 
 
     }

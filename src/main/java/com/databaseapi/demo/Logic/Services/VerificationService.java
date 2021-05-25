@@ -1,21 +1,23 @@
 package com.databaseapi.demo.Logic.Services;
 
 import com.databaseapi.demo.API.ApiModels.LoginUserInfo;
-import com.databaseapi.demo.Logic.Model.User;
-import com.databaseapi.demo.Logic.Model.UserContainer;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.databaseapi.demo.Interfaces.IUserAuthentication;
+import com.databaseapi.demo.Interfaces.IUserDALgetter;
 import org.springframework.stereotype.Component;
 
 @Component
 public class VerificationService {
-    @Autowired
-    private UserContainer userContainer;
+    private IUserAuthentication dal;
+
+    public VerificationService(IUserAuthentication dal) {
+        this.dal = dal;
+    }
 
     public boolean verifyUser(LoginUserInfo loginInfo){
-            User user = userContainer.GetUser(loginInfo.getName());
-            if(user.getPassword().matches(loginInfo.getPassword())){
-                return true;
-            }
-            else return false;
+        String password = dal.GetUserPassword(loginInfo.getName());
+        if(password.matches(loginInfo.getPassword())){
+            return true;
+        }
+        else return false;
     }
 }

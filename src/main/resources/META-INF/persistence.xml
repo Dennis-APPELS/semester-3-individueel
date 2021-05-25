@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+<persistence-unit name="UserDB">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <properties>
+        <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect"/>
+        <property name="hibernate.hbm2ddl.auto" value="update"/>
+        <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://192.168.67.1:1433;databaseName=Semester3Local"/>
+        <property name="javax.persistence.jdbc.user" value="Project_Login"/>
+        <property name="javax.persistence.jdbc.password" value="Connect"/>
+        <property name="hibernate.connection.CharSet" value="utf8"/>
+        <property name="hibernate.connection.characterEncoding" value="utf8"/>
+        <property name="hibernate.connection.useUnicode" value="true"/>
+        <property name="hibernate.show_sql" value="true"/>
+    </properties>
+</persistence-unit>
+</persistence>

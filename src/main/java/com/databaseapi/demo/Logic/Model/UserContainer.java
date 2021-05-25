@@ -1,9 +1,8 @@
 package com.databaseapi.demo.Logic.Model;
 
-import com.databaseapi.demo.DAL.DataModels.UserDataModel;
-import com.databaseapi.demo.DAL.Repos.UserRepo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
+import com.databaseapi.demo.DTO.UserDTO;
+import com.databaseapi.demo.Interfaces.IUserDALgetter;
+import com.databaseapi.demo.Interfaces.IUserDALsetter;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,35 +10,70 @@ import java.util.List;
 @Component
 public class UserContainer {
     private List<User> users = new ArrayList<>();
+    private IUserDALgetter dal;
+    private IUserDALsetter setter;
 
-    @Autowired
-    private UserRepo userRepo;
-
-
-
-    public User GetUser(Long id){
-        return new User(userRepo.getOne(id));
+    public UserContainer(IUserDALgetter dal, IUserDALsetter setter) {
+        this.dal = dal;
+        this.setter = setter;
+        List<UserDTO> result = dal.GetAllUsers();
+        for (UserDTO dto:
+                result) {
+            users.add(new User(dto));
+        }
     }
 
-    public User GetUser(String name){
-        UserDataModel user = new UserDataModel();
-        user.setName(name);
-        Example<UserDataModel> example = Example.of(user);
-        List<UserDataModel> output = userRepo.findAll(example);
-        return new User(output.get((int)output.stream().count() - 1));
+    public User GetUserById(Long id) throws Exception{
+        for (User user:
+             users) {
+            if(user.getId().equals(id)){
+                return user;
+            }
+        }
+        throw new Exception("User niet gevonden");
     }
 
-    public boolean userExists(User user){
-        UserDataModel userDataModel = new UserDataModel(user);
-        Example<UserDataModel> example = Example.of(userDataModel);
-        if(userRepo.exists(example)) return true;
-        else return false;
+    public User GetUserByName(String name)throws Exception{
+        for (User user:
+                users) {
+            if(user.getName().equals(name)){
+                return user;
+            }
+        }
+        throw new Exception("User niet gevonden");
     }
 
-    public void saveUser(User user){
-        UserDataModel userDataModel = new UserDataModel(user);
-        Example<UserDataModel> example = Example.of(userDataModel);
-        if(!userRepo.exists(example)) userRepo.save(userDataModel);
+    public List<User> GetUsers(){
+        return users;
+    }
+
+    private void Refresh(){
+        List<UserDTO> result = dal.GetAllUsers();
+        for (UserDTO dto:
+                result) {
+            users.add(new User(dto));
+        }
+    }
+
+    public void SaveUser(User user) throws Exception{
+        for (User addedUser:
+             users) {
+            if(addedUser.getName().equals(user.getName()) || addedUser.getPassword().equals(user.getPassword())){
+                throw new Exception("User bestaat al");
+            }
+        }
+        users.add(user);
+        user.Save(setter);
+    }
+
+    public void UpdateUser(User user){
+        for (User userToUpdate:
+             users) {
+            if(userToUpdate.getId().equals(user.getId())){
+                userToUpdate.Update(user, setter);
+            }
+        }
+
     }
 
 }

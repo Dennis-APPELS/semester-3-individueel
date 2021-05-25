@@ -2,9 +2,10 @@ package com.databaseapi.demo.DTO;
 
 import com.databaseapi.demo.DAL.DataModels.UserDataModel;
 import com.databaseapi.demo.Logic.Model.User;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
-
+@Getter
 public class UserDTO {
     private Long id;
     private String password;

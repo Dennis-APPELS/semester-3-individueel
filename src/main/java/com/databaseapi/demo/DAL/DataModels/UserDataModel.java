@@ -1,8 +1,10 @@
 package com.databaseapi.demo.DAL.DataModels;
 
+import com.databaseapi.demo.DTO.UserDTO;
 import com.databaseapi.demo.Logic.Model.User;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.NamedNativeQuery;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity @Getter @Setter
+
 public class UserDataModel {
     @Id
     @GeneratedValue
@@ -21,7 +24,7 @@ public class UserDataModel {
     private LocalDateTime lastOnline;
     private int timesReported;
 
-    public UserDataModel(User user){
+    public UserDataModel(UserDTO user){
         id = user.getId();
         name = user.getName();
         password = user.getPassword();
