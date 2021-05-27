@@ -38,4 +38,6 @@ public class UserDTO {
         timesReported = user.getTimesReported();
     }
 
+    public UserDTO() {
+    }
 }
