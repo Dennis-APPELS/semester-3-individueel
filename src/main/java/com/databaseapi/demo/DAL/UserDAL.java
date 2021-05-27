@@ -1,5 +1,6 @@
 package com.databaseapi.demo.DAL;
 
+import com.databaseapi.demo.DAL.DataModels.FriendshipDataModel;
 import com.databaseapi.demo.DAL.DataModels.UserDataModel;
 import com.databaseapi.demo.DTO.UserDTO;
 import com.databaseapi.demo.Interfaces.IUserAuthentication;
@@ -114,12 +115,24 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
     }
 
     public UserDTO GetUserByName(String username){
-        Query query = manager.createNativeQuery("Select * From Semester3Local.Project_Login.user_data_model" +
+        Query query = manager.createNativeQuery("Select * From UserDataModel" +
                 " Where user_data_model.name = :username", UserDataModel.class);
         query.setParameter("username", username);
         UserDataModel result = (UserDataModel) query.getSingleResult();
         return new UserDTO(result);
     }
 
+    public List<UserDTO> GetFriendsByUserId(Long userId){
+        Query query = manager.createNativeQuery("Select * From FriendshipDataModel" +
+                " Where user = :userId And isAccepted = true");
+        query.setParameter("userId", userId);
+        List<FriendshipDataModel> output = query.getResultList();
+        List<UserDTO> result = new ArrayList<>();
+        for (FriendshipDataModel friendship:
+             output) {
+            result.add(new UserDTO(friendship.getFriend()));
+        }
+        return result;
+    }
 
 }

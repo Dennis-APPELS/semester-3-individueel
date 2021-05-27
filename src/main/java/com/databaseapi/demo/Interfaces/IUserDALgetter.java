@@ -8,5 +8,6 @@ public interface IUserDALgetter {
    List<UserDTO> GetAllUsers();
    UserDTO GetUserById(long userId);
    UserDTO GetUserByName(String username);
+   List<UserDTO> GetFriendsByUserId(Long userId);
 
 }

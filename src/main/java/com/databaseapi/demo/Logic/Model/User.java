@@ -8,6 +8,8 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Getter
 public class User {
     private Long id;
@@ -16,7 +18,7 @@ public class User {
     private String email;
     private LocalDateTime lastOnline;
     private int timesReported;
-
+    private List<Long> friendIds;
 
 
 
@@ -27,6 +29,7 @@ public class User {
         email = user.getEmail();
         lastOnline = user.getLastOnline();
         timesReported = user.getTimesReported();
+        friendIds = user.getFriendIds();
     }
 
     public User (RegistrationUserInfo user){

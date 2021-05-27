@@ -12,6 +12,7 @@ public class UserInfo {
     private String email;
     private LocalDateTime lastOnline;
     private int timesReported;
+    private String lastPlayedGame;
 
     public UserInfo() {
     }

@@ -13,7 +13,7 @@ public class RegistrationController {
         this.registrationService = registrationService;
     }
 
-    @PostMapping("/POST/Users/RegistrationInfo")
+    @PostMapping(value = "/POST/Users/RegistrationInfo", consumes = "application/json")
     public boolean Register(@RequestBody RegistrationUserInfo userInfo){
 
             registrationService.registerUser(userInfo);
