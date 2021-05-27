@@ -40,6 +40,8 @@ cache:
 # Verify merge requests using JDK8
 verify:jdk8:
   <<: *verify
+  tags:
+    - my-runner
 
 build-job:
     stage: build
