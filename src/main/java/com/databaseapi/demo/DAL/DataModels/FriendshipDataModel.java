@@ -8,11 +8,14 @@ import javax.persistence.*;
 @Entity @Getter @Setter
 public class FriendshipDataModel {
     @Id
+    @GeneratedValue
+    private Long friendshipId;
+
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private UserDataModel user;
 
-    @Id
+
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     private UserDataModel friend;

@@ -40,19 +40,6 @@
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DatabaseApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="semester-3-individueel" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.databaseapi.demo.DatabaseApiApplication" />
@@ -73,7 +60,8 @@
       <workItem from="1621512685551" duration="136000" />
       <workItem from="1621512974118" duration="357000" />
       <workItem from="1621515248606" duration="738000" />
-      <workItem from="1622099729874" duration="10885000" />
+      <workItem from="1622099729874" duration="11131000" />
+      <workItem from="1622116516619" duration="415000" />
     </task>
     <servers />
   </component>

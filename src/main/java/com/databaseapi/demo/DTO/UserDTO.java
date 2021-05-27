@@ -17,7 +17,6 @@ public class UserDTO {
     private LocalDateTime lastOnline;
     private int timesReported;
 
-    private List<Long> friendIds;
 
     public UserDTO (UserDataModel user){
         id = user.getId();
@@ -26,11 +25,6 @@ public class UserDTO {
         email = user.getEmail();
         lastOnline = user.getLastOnline();
         timesReported = user.getTimesReported();
-        friendIds = new ArrayList<>();
-        for (UserDataModel model:
-             user.getFriends()) {
-            friendIds.add(model.getId());
-        }
     }
 
     public UserDTO (User user){

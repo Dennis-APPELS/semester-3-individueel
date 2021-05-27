@@ -29,7 +29,6 @@ public class User {
         email = user.getEmail();
         lastOnline = user.getLastOnline();
         timesReported = user.getTimesReported();
-        friendIds = user.getFriendIds();
     }
 
     public User (RegistrationUserInfo user){
