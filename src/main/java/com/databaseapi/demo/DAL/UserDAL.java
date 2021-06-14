@@ -44,10 +44,10 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
 
     }
 
-    public String GetUserPassword(String username) {
+    public String GetUserPassword(String username){
         manager  = factory.createEntityManager();
-        Query query = manager.createNativeQuery("Select password From Semester3Local.Project_Login.user_data_model" +
-                " Where user_data_model.name = :username ");
+        Query query = manager.createNativeQuery("Select password From UserDataModel" +
+                " Where name = :username ");
         query.setParameter("username", username);
         try{
             return query.getSingleResult().toString();
@@ -62,8 +62,8 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
 
     public void DeleteUser(long userID){
         manager  = factory.createEntityManager();
-        Query query = manager.createNativeQuery("Delete From Semester3Local.Project_Login.user_data_model " +
-                " Where user_data_model.id = :userID");
+        Query query = manager.createNativeQuery("Delete From UserDataModel" +
+                " Where id = :userID");
         query.setParameter("userID", userID);
         try{
             query.executeUpdate();
@@ -106,7 +106,7 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
     public List<UserDTO> GetAllUsers(){
         List<UserDTO> users = new ArrayList<>();
         manager  = factory.createEntityManager();
-        Query query = manager.createNativeQuery("Select * From Semester3Local.Project_Login.user_data_model", UserDataModel.class);
+        Query query = manager.createNativeQuery("Select * From UserDataModel", UserDataModel.class);
         try{
             List<UserDataModel> result = query.getResultList();
 
@@ -130,8 +130,8 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
 
     public UserDTO GetUserById(long userID){
         manager  = factory.createEntityManager();
-        Query query = manager.createNativeQuery("Select * From Semester3Local.Project_Login.user_data_model" +
-                " Where user_data_model.id = :userID", UserDataModel.class);
+        Query query = manager.createNativeQuery("Select * From UserDataModel" +
+                " Where id = :userID", UserDataModel.class);
         query.setParameter("userID", userID);
         try{
             UserDataModel result = (UserDataModel) query.getSingleResult();
@@ -152,7 +152,7 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
     public UserDTO GetUserByName(String username){
         manager  = factory.createEntityManager();
         Query query = manager.createNativeQuery("Select * From UserDataModel" +
-                " Where user_data_model.name = :username", UserDataModel.class);
+                " Where name = :username", UserDataModel.class);
         query.setParameter("username", username);
         try{
             UserDataModel result = (UserDataModel) query.getSingleResult();

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity @Getter @Setter
-
+@Table(name = "UserDataModel")
 public class UserDataModel {
     @Id
     @GeneratedValue

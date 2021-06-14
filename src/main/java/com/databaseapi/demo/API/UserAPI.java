@@ -6,6 +6,7 @@ import com.databaseapi.demo.Logic.Model.User;
 import com.databaseapi.demo.Logic.Model.UserContainer;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,5 +30,11 @@ public class UserAPI {
             result.add(converter.convertUserToUserInfo(user));
         }
         return result;
+    }
+
+    @GetMapping("/UserId")
+    public Integer GetUserId(HttpServletRequest request){
+        return (Integer) request.getSession().getAttribute("UserId");
+
     }
 }

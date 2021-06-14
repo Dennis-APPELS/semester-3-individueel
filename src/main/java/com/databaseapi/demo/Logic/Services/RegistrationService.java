@@ -14,15 +14,17 @@ public class RegistrationService {
         this.userContainer = userContainer;
     }
 
-    public void registerUser(RegistrationUserInfo userInfo){
+    public boolean registerUser(RegistrationUserInfo userInfo){
             User user = new User(userInfo);
             try{
                 userContainer.SaveUser(user);
+                return true;
             }
             catch(Exception ex){
                 System.out.println(ex.getMessage());
                 System.out.println(ex.getCause());
                 System.out.println(ex.getStackTrace());
+                return false;
             }
 
 
