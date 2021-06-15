@@ -62,7 +62,7 @@ deploy-job:
   before_script:
     - docker info
   script:
-    - docker build -t dbapi:v1 .
+    - docker build -t 438768/dbapi:v1 .
     - docker login -u "438768" -p "DremYolLok5"
     - docker push 438768/dbapi:v1
     - docker logout
