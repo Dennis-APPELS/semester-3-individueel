@@ -52,7 +52,13 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Semester-3-individueel</name>
+            <url>https://git.fhict.nl/I438768/semester-3-individueel.git</url>
+        </repository>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>
