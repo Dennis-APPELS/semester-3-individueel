@@ -58,4 +58,8 @@ deploy-job:
     - my-runner
   script:
     - 'mvn $MAVEN_CLI_OPTS clean package -X'
+  environment:
+    name: production
+    url: https://production.Semester3Dennis.com
+
 
