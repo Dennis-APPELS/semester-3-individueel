@@ -32,7 +32,7 @@ cache:
 .verify: &verify
   stage: test
   script:
-    - 'mvn $MAVEN_CLI_OPTS verify'
+    - sudo 'mvn $MAVEN_CLI_OPTS verify'
   except:
     variables:
       - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -48,16 +48,16 @@ build-job:
     tags: 
       - my-runner
     script:
-        - echo "Building Project" 
-        - 'mvn $MAVEN_CLI_OPTS compile -X'
-        - echo "Build Succeded?"
+        - sudo echo "Building Project" 
+        - sudo 'mvn $MAVEN_CLI_OPTS compile -X'
+        - sudo echo "Build Succeded?"
 
 deploy-job:
   stage: deploy
   tags: 
     - my-runner
   before_script:
-    - docker info
+    - sudo docker info
   script:
     - docker build -t dbapi:v1 .
 
