@@ -57,7 +57,7 @@ deploy-job:
   tags: 
     - my-runner
   before_script:
-    - host.docker info
+    - docker info
   script:
     - docker build -t dbapi:v1 .
 
