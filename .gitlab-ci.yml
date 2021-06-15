@@ -61,8 +61,7 @@ deploy-job:
     - my-runner
   script:
     - docker build -t dbapi:v1 .
-    - docker login -u "438768" -p "DremYolLok5"
-    - docker push dbapi:v1
+
 
 
 
