@@ -14,10 +14,11 @@ public class VerificationService {
     }
 
     public boolean verifyUser(LoginUserInfo loginInfo){
-        String password = dal.GetUserPassword(loginInfo.getName());
-        if(password.matches(loginInfo.getPassword())){
-            return true;
-        }
-        else return false;
+
+            String password = dal.GetUserPassword(loginInfo.getName());
+            if(password.matches(loginInfo.getPassword())){
+                return true;
+            }
+            else return false;
     }
 }

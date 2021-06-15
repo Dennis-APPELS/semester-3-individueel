@@ -76,4 +76,21 @@ public class UserContainer {
 
     }
 
+    public List<User> GetFriends(String username){
+        try{
+            User user = GetUserByName(username);
+            List<UserDTO> friendsDTO = dal.GetFriendsByUserId(user.getId());
+            List<User> users = new ArrayList<>();
+            for (UserDTO dto:
+                 friendsDTO) {
+                users.add(new User(dto));
+            }
+            return users;
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return new ArrayList<User>();
+    }
+
 }

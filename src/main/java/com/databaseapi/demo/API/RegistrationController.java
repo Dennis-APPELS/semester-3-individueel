@@ -13,12 +13,14 @@ public class RegistrationController {
         this.registrationService = registrationService;
     }
 
-    @PostMapping("/POST/Users/RegistrationInfo")
-    public boolean Register(@RequestBody RegistrationUserInfo userInfo){
-
-            registrationService.registerUser(userInfo);
-            return true;
-
+    @PostMapping(value = "/POST/Users/RegistrationInfo", consumes = "application/json")
+    public String Register(@RequestBody RegistrationUserInfo userInfo){
+            if(registrationService.registerUser(userInfo)){
+                return "Registered successfully";
+            }
+            else{
+                return "Failed to register";
+            }
     }
 
 }

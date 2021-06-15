@@ -1,5 +1,6 @@
 package com.databaseapi.demo.DAL;
 
+import com.databaseapi.demo.DAL.DataModels.FriendshipDataModel;
 import com.databaseapi.demo.DAL.DataModels.UserDataModel;
 import com.databaseapi.demo.DTO.UserDTO;
 import com.databaseapi.demo.Interfaces.IUserAuthentication;
@@ -21,6 +22,7 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
     }
 
     public void SaveUser(UserDTO userDTO){
+        manager  = factory.createEntityManager();
         transaction = manager.getTransaction();
         transaction.begin();
         manager.persist(new UserDataModel(userDTO));
@@ -42,9 +44,10 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
 
     }
 
-    public String GetUserPassword(String username) {
-        Query query = manager.createNativeQuery("Select password From Semester3Local.Project_Login.user_data_model" +
-                " Where user_data_model.name = :username ");
+    public String GetUserPassword(String username){
+        manager  = factory.createEntityManager();
+        Query query = manager.createNativeQuery("Select password From UserDataModel" +
+                " Where name = :username ");
         query.setParameter("username", username);
         try{
             return query.getSingleResult().toString();
@@ -58,8 +61,9 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
     }
 
     public void DeleteUser(long userID){
-        Query query = manager.createNativeQuery("Delete From Semester3Local.Project_Login.user_data_model " +
-                " Where user_data_model.id = :userID");
+        manager  = factory.createEntityManager();
+        Query query = manager.createNativeQuery("Delete From UserDataModel" +
+                " Where id = :userID");
         query.setParameter("userID", userID);
         try{
             query.executeUpdate();
@@ -69,9 +73,15 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
             System.out.println(ex.getCause());
             System.out.println(ex.getStackTrace());
         }
+        finally{
+            if(manager.isOpen()){
+                manager.close();
+            }
+        }
     }
 
     public void UpdateUser(UserDTO userDTO){
+        manager  = factory.createEntityManager();
         transaction = manager.getTransaction();
         transaction.begin();
         manager.merge(new UserDataModel(userDTO));
@@ -94,32 +104,96 @@ public class UserDAL implements IUserDALgetter, IUserDALsetter, IUserAuthenticat
     }
 
     public List<UserDTO> GetAllUsers(){
-        Query query = manager.createNativeQuery("Select * From Semester3Local.Project_Login.user_data_model", UserDataModel.class);
-        List<UserDataModel> result = query.getResultList();
         List<UserDTO> users = new ArrayList<>();
-        for (UserDataModel dataModel:
-             result) {
-            users.add(new UserDTO(dataModel));
+        manager  = factory.createEntityManager();
+        Query query = manager.createNativeQuery("Select * From UserDataModel", UserDataModel.class);
+        try{
+            List<UserDataModel> result = query.getResultList();
+
+            for (UserDataModel dataModel:
+                    result) {
+                users.add(new UserDTO(dataModel));
+            }
+            return users;
         }
-        return users;
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+            return users;
+        }
+        finally{
+            if(manager.isOpen()){
+                manager.close();
+            }
+        }
+
     }
 
     public UserDTO GetUserById(long userID){
-        Query query = manager.createNativeQuery("Select * From Semester3Local.Project_Login.user_data_model" +
-                " Where user_data_model.id = :userID", UserDataModel.class);
+        manager  = factory.createEntityManager();
+        Query query = manager.createNativeQuery("Select * From UserDataModel" +
+                " Where id = :userID", UserDataModel.class);
         query.setParameter("userID", userID);
-        UserDataModel result = (UserDataModel) query.getSingleResult();
-        return new UserDTO(result);
+        try{
+            UserDataModel result = (UserDataModel) query.getSingleResult();
+            return new UserDTO(result);
+        }
 
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+            return new UserDTO();
+        }
+        finally{
+            if(manager.isOpen()){
+                manager.close();
+            }
+        }
     }
 
     public UserDTO GetUserByName(String username){
-        Query query = manager.createNativeQuery("Select * From Semester3Local.Project_Login.user_data_model" +
-                " Where user_data_model.name = :username", UserDataModel.class);
+        manager  = factory.createEntityManager();
+        Query query = manager.createNativeQuery("Select * From UserDataModel" +
+                " Where name = :username", UserDataModel.class);
         query.setParameter("username", username);
-        UserDataModel result = (UserDataModel) query.getSingleResult();
-        return new UserDTO(result);
+        try{
+            UserDataModel result = (UserDataModel) query.getSingleResult();
+            return new UserDTO(result);
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+            return new UserDTO();
+        }
+        finally{
+            if(manager.isOpen()){
+                manager.close();
+            }
+        }
     }
 
+    public List<UserDTO> GetFriendsByUserId(Long userId){
+        manager  = factory.createEntityManager();
+        List<UserDTO> result = new ArrayList<>();
+        Query query = manager.createNativeQuery("Select * From FriendshipDataModel" +
+                " Where user = :userId And isAccepted = true");
+        query.setParameter("userId", userId);
+        try{
+            List<FriendshipDataModel> output = query.getResultList();
+
+            for (FriendshipDataModel friendship:
+                    output) {
+                result.add(new UserDTO(friendship.getFriend()));
+            }
+            return result;
+        }
+
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+            return result;
+        }
+        finally{
+            if(manager.isOpen()){
+                manager.close();
+            }
+        }
+    }
 
 }

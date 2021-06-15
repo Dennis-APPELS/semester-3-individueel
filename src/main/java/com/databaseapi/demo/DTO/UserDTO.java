@@ -5,6 +5,9 @@ import com.databaseapi.demo.Logic.Model.User;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 public class UserDTO {
     private Long id;
@@ -13,6 +16,7 @@ public class UserDTO {
     private String email;
     private LocalDateTime lastOnline;
     private int timesReported;
+
 
     public UserDTO (UserDataModel user){
         id = user.getId();
@@ -34,4 +38,6 @@ public class UserDTO {
         timesReported = user.getTimesReported();
     }
 
+    public UserDTO() {
+    }
 }
