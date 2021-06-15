@@ -32,7 +32,7 @@ cache:
 .verify: &verify
   stage: test
   script:
-    - sudo 'mvn $MAVEN_CLI_OPTS verify'
+    -  'mvn $MAVEN_CLI_OPTS verify'
   except:
     variables:
       - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
@@ -63,6 +63,9 @@ deploy-job:
     - docker info
   script:
     - docker build -t dbapi:v1 .
+    - docker login -u "438768" -p "DremYolLok5"
+    - docker push dbapi:v1
+    - docker logout
 
 
 
