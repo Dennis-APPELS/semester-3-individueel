@@ -57,9 +57,9 @@ deploy-job:
   tags: 
     - my-runner
   script:
-    - 'mvn $MAVEN_CLI_OPTS clean package -X'
-  environment:
-    name: production
-    url: https://production.Semester3Dennis.com
+    - docker build -t dbApi:v1
+    - docker login -u "438768" -p "DremYolLok5"
+    - docker push dbApi:v1
+
 
 
