@@ -60,9 +60,9 @@ deploy-job:
   tags: 
     - my-runner
   script:
-    - docker build -t dbApi:v1
+    - docker build -t dbapi:v1
     - docker login -u "438768" -p "DremYolLok5"
-    - docker push dbApi:v1
+    - docker push dbapi:v1
 
 
 
