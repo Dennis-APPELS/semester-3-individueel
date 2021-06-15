@@ -13,10 +13,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Tag Library Descriptor" />
         <option value="spring-beans.schema" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Tag Library Descriptor" />
       </list>
     </option>
   </component>
@@ -48,6 +48,17 @@
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RunManager" selected="Spring Boot.DatabaseApiApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in semester-3-individueel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="semester-3-individueel" />
       <option name="PACKAGE_NAME" value="" />
@@ -134,7 +145,8 @@
       <workItem from="1623404914343" duration="612000" />
       <workItem from="1623410884263" duration="4550000" />
       <workItem from="1623420469783" duration="1456000" />
-      <workItem from="1623656277088" duration="1292000" />
+      <workItem from="1623656277088" duration="1385000" />
+      <workItem from="1623743655996" duration="923000" />
     </task>
     <servers />
   </component>
