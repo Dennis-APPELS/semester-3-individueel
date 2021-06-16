@@ -10,4 +10,4 @@ EXPOSE 4567
 COPY --from=BUILD /usr/src/app/target /opt/target
 WORKDIR /opt/target
 
-CMD ["java", "-jar", "find -type f -name '*-with-dependencies.jar' | xargs java -jar"]
+CMD ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
